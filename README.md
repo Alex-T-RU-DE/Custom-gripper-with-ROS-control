@@ -1,12 +1,17 @@
-# Kuka-gripper-ROS-Serial-Arduino
+# Kuka-youbot-gripper-ROSSerial
+
+Custom gripper for youbot with ROS-control 
+========================
 
 This project shows how to make and implement a new gripper for the arm of the Kuka Youbot.
 
-Models with printing:
+Required parts
+-------------------------
 
-Electrical parts:
-
-Codes and controller:
+-   Printed with 3D printer and assebled gripper from the following link: https://www.thingiverse.com/thing:4764063
+-   Arduino mega/pro
+-   Wires
+-   [DC-DC transformer ](https://www.amazon.de/LAOMAO-Wandler-einstellbar-Spannungswandler-Converter/dp/B00HV4EPG8/ref=asc_df_B00HV4EPG8/?tag=googshopde-21&linkCode=df0&hvadid=231941675984&hvpos=&hvnetw=g&hvrand=3852759402861473550&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9068552&hvtargid=pla-420005320986&psc=1&th=1&psc=1)
 
 Instructions for the service:
 
@@ -17,8 +22,8 @@ Before starting make sure that you installed Arduino IDE.
 1. Copy folder "youbot_gripper" into your catkin_ws/scr directory.
 2. Navigate yourself into catking_ws and compile it with catkin_make.
 3. installing ROSserial:
-    'sudo apt-get install ros-<your_version_of_ros>-rosserial-arduino'
-    'sudo apt-get install ros-<your_version_of_ros>-rosserial'
+    «sudo apt-get install ros-<your_version_of_ros>-rosserial-arduino»
+    «sudo apt-get install ros-<your_version_of_ros>-rosserial»
 4. Open <your Arduino directory>/Arduino/library in terminal and run following command:
     'rosrun rosserial_arduino make_libraries.py'  (It will automatically prepare and copy all your custom messages, services and packages (including youbot gripper) in the library of Arduino.
 5. Download file "Gripper_service_server.ino" and put it into Arduino directory.
