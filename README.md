@@ -9,3 +9,5 @@ Electrical parts:
 Codes and controller:
 
 Instructions for the service:
+
+Step by step for starting the programm:
