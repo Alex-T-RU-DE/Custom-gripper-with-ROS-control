@@ -1,9 +1,6 @@
-# Kuka-youbot-gripper-ROSSerial
+# Custom gripper for youbot with ROS-control 
 
-## Custom gripper for youbot with ROS-control 
-
-
-This project shows how to make and implement a new gripper for the arm of the Kuka Youbot.
+This project shows and explains how to make and implement a new gripper with ROS connection for the arm of the Kuka Youbot. 
 
 ## Required parts
 
