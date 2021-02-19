@@ -17,7 +17,7 @@ Before starting make sure that you installed Arduino IDE.
 
 1. Copy folder "youbot_gripper" into your catkin_ws/scr directory.
 
-2. Navigate yourself into catking_ws and compile it with catkin_make.
+2. Navigate yourself into catking_ws download and compile folder "Youbot gripper" with catkin_make.
 
 3. installing ROSserial:
  ```
