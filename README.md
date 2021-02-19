@@ -62,5 +62,10 @@ but you should put some number instead of the ```NUMBER_OF_INSTRUCTIONS```
                                  
 ## Instructions for the service
 
-In order to use different commands for this gripper you could use following numbers to achieve desired result
->
+In order to use different commands for this gripper you could use following numbers to achieve desired result:
+
+```0 ``` - close gripper
+```1 ``` - open gripper
+```2-100 ``` - open gripper for recieved procent
+```1000-1380 ``` set the angle of the first servo to the position in range 0-380
+```2000-2380 ``` set the angle of the second servo to the position in range 0-380
