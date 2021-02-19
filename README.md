@@ -14,12 +14,14 @@ This project shows how to make and implement a new gripper for the arm of the Ku
 -   [DC-DC transformer](https://www.amazon.de/LAOMAO-Wandler-einstellbar-Spannungswandler-Converter/dp/B00HV4EPG8/ref=asc_df_B00HV4EPG8/?tag=googshopde-21&linkCode=df0&hvadid=231941675984&hvpos=&hvnetw=g&hvrand=3852759402861473550&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9068552&hvtargid=pla-420005320986&psc=1&th=1&psc=1)
 
 
-Step by step for starting the programm:
+## Step by step to start the programm:
 
 Before starting make sure that you installed Arduino IDE.
 
 1. Copy folder "youbot_gripper" into your catkin_ws/scr directory.
+
 2. Navigate yourself into catking_ws and compile it with catkin_make.
+
 3. installing ROSserial:
  ```
 sudo apt-get install ros-<your_version_of_ros>-rosserial-arduino.
