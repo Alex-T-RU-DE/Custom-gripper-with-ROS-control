@@ -21,8 +21,8 @@ Before starting make sure that you installed Arduino IDE.
 
 3. installing ROSserial:
  ```
-sudo apt-get install ros-<your_version_of_ros>-rosserial-arduino
-sudo apt-get install ros-<your_version_of_ros>-rosserial
+sudo apt-get install ros-<your_ros_version>-rosserial-arduino
+sudo apt-get install ros-<your_ros_version>-rosserial
  ```
 4. Open <your Arduino directory>/Arduino/library in terminal and run following command:
 ```
