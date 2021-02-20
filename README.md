@@ -61,13 +61,13 @@ Where ```NUMBER_OF_INSTRUCTIONS``` should be replaced according to numbers, whic
 
 To use different commands for this gripper, you could use the following numbers to achieve the desired result:
 
-```0 ``` - close gripper
+```0``` - close gripper
 
-```1 ``` - open gripper
+```1``` - open gripper
 
-```2-100 ``` - open gripper for received percent
+```2-100``` - open gripper for received percent
 
-```1000-1380 ``` set the angle of the first servo to the position in range 0-380
+```1000-1380``` set the angle of the first servo to the position in range 0-380
 
-```2000-2380 ``` set the angle of the second servo to the position in range 0-380
+```2000-2380``` set the angle of the second servo to the position in range 0-380
 
