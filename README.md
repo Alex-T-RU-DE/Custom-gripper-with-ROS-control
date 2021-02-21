@@ -13,7 +13,7 @@ This project shows and explains how to make and implement a new gripper with ROS
 -   [DC-DC transformer](https://www.amazon.de/LAOMAO-Wandler-einstellbar-Spannungswandler-Converter/dp/B00HV4EPG8/ref=asc_df_B00HV4EPG8/?tag=googshopde-21&linkCode=df0&hvadid=231941675984&hvpos=&hvnetw=g&hvrand=3852759402861473550&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9068552&hvtargid=pla-420005320986&psc=1&th=1&psc=1)
 
 
-## Step by step to starting the program:
+## Software:
 
 Before starting, make sure that you installed Arduino IDE.
 
