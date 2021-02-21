@@ -1,5 +1,7 @@
 # Custom gripper for youbot with ROS control 
 
+Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-with-ROS-control/blob/main/README.md), [Русский](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-with-ROS-control/blob/main/README.ru.md) 
+
 This project shows and explains how to make and implement a new gripper with ROS connection for the arm of the Kuka Youbot. 
 
 ## Required parts
