@@ -15,9 +15,9 @@ Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-wi
 
 ## Шаг за шагом для запуска программы:
 
-Before starting, make sure that you installed Arduino IDE.
+Перед тем как начать, вам необходимо установить Arduino IDE.
 
-1. Copy folder "youbot_gripper" into your catkin_ws/src directory.
+1. Копируйте "youbot_gripper" в вашу папку catkin_ws/src.
 
 2. Navigate yourself into catking_ws download and compile folder "Youbot gripper" with catkin_make.
 
