@@ -41,7 +41,7 @@ rosrun rosserial_arduino make_libraries.py .
     ^~~~~~~~~
 compilation terminated. 
  ```
-то вы должны сменить файл "**msg.h**" в вашей директории `~/Arduino/libraries/ros_lib/ros2`, которая была сгенерирована командой ```rosrun rosserial_arduino make_libraries.py .``` . Сделать нужно это следующим образом: заходим `скетч>подключить библиотеку>управлять библиотеками` в Arduino IDE, находим через поиск библиотеку "*rosserial lib*" (0.7.8 version), заходим в `~/Rosserial_Arduino_Library/src/ros/`, копируем файл "**msg.h**" и заменяем на него файл с таким же именем в `~/Arduino/libraries/ros_lib/ros2`. После этого библиотеку `Rosserial_Arduino_Library` можно удалить.
+то вы должны сменить файл "**msg.h**" в вашей директории `~/Arduino/libraries/ros_lib/ros2`, которая была сгенерирована командой ```rosrun rosserial_arduino make_libraries.py .``` . Сделать нужно это следующим образом: заходим `скетч>подключить библиотеку>управлять библиотеками` в Arduino IDE, находим и скачиваем через поиск библиотеку "*rosserial lib*" (0.7.8 version), заходим в `~/Rosserial_Arduino_Library/src/ros/`, копируем файл "**msg.h**" и заменяем на него файл с таким же именем в `~/Arduino/libraries/ros_lib/ros2`. После этого библиотеку `Rosserial_Arduino_Library` можно удалить.
 
 Для того, чтобы запустить програму с грипером на вашем устройстве, к которому он подключен, вам нужно выполнить следующую команду:
    
