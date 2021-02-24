@@ -73,3 +73,6 @@ To use different commands for this gripper, you could use the following numbers 
 
 ```2000-2380``` set the angle of the second servo to the position in range 0-380
 
+### Simulation:
+
+1 download and compile folder new_gripper_urdf  
