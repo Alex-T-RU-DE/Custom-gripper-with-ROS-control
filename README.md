@@ -75,4 +75,6 @@ To use different commands for this gripper, you could use the following numbers 
 
 ### Simulation:
 
-1 download and compile folder new_gripper_urdf  
+1 download and compile folder new_gripper_urdf 
+
+### Integration with the Youbot arm:
