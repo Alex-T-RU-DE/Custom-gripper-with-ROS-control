@@ -76,6 +76,6 @@ coming soon:
 
 ### Simulation:
 
-### Integration with the Youbot arm:
+### Integration with the Youbot arm in Gazebo:
 
 ### Electrical parts:
