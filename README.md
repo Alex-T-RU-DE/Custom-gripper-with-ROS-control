@@ -91,7 +91,9 @@ Or you can download `youbot_descriptions` and `youbot_simulation` folders into y
 
 after you did these changes, you should start the simulation with the following command:
 
-```roslaunch youbot_gazebo_robot youbot.launch``` 
+```
+roslaunch youbot_gazebo_robot youbot.launch
+``` 
 
 Sometimes, simulation requires 2 or 3 restarts to spawn robot and controllers correctly.
 If your simulation works well, you can check the fingers of the gripper with:
