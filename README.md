@@ -72,10 +72,11 @@ To use different commands for this gripper, you could use the following numbers 
 
 ```2000-2380``` set the angle of the second servo to the position in range 0-380
 
-coming soon:
+
 
 ### Simulation:
-
+ coming soon
+ 
 ### Integration with the Youbot arm in Gazebo:
 
 Working demo: https://youtu.be/vPzOUe2N2ss
