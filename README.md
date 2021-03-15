@@ -95,11 +95,9 @@ after you did this changes you should start the simulation with the following co
 Sometimes, simulation require 2 or 3 restarts to spanw robot and controllers correcrly.
 If your simulation works well, you can check the fingers of the gripper with:
 
-
-```rostopic pub -1 /gripper/gripper_controller_1/command std_msgs/Float64 "data: -1.5"``` 
-```rostopic pub -1 /gripper/gripper_controller/command std_msgs/Float64 "data: 1.5"``` 
-
-
-
+```
+rostopic pub -1 /gripper/gripper_controller_1/command std_msgs/Float64 "data: -1.5" 
+rostopic pub -1 /gripper/gripper_controller/command std_msgs/Float64 "data: 1.5"
+``` 
 
 ### Electrical parts:
