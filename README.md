@@ -82,10 +82,10 @@ Information will be later, now you can check a demo: https://youtu.be/vPzOUe2N2s
 
 If you already have youbot package, for the implementation of this gripper with its functionality to the Kuka youbot Gazebo simulation, you have to do following actions:
 
-1. Copy File 'gripper_controller.launch' and put it into your '~catkin_ws/scr/youbot_simulation/youbot_gazebo_control/launch' directory
-2. Copy files 'gripper_controller.yaml' and 'gripper_controller_1.yaml' into your '~catkin_ws/scr/youbot_simulation/youbot_gazebo_control/config' directory
-3. Replace your '~catkin_ws/scr/youbot_description/urdf/youbot_gripper' and '~catkin_ws/scr/youbot_description/meshes/youbot_gripper' folders with the same folders from the same directories from this repository.
+1. Copy File 'gripper_controller.launch' and put it into your `~catkin_ws/scr/youbot_simulation/youbot_gazebo_control/launch` directory
+2. Copy files `gripper_controller.yaml` and `gripper_controller_1.yaml` into your `~catkin_ws/scr/youbot_simulation/youbot_gazebo_control/config` directory
+3. Replace your `~catkin_ws/scr/youbot_description/urdf/youbot_gripper` and `~catkin_ws/scr/youbot_description/meshes/youbot_gripper` folders with the same folders from the same directories from this repository.
 
-or you can simply download 'youbot_descriptions' and 'youbot_simulation' folders into you 'catkin_ws'
+or you can simply download `youbot_descriptions` and `youbot_simulation` folders into you `catkin_ws`
 
 ### Electrical parts:
