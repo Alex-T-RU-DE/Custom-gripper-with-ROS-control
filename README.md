@@ -78,6 +78,6 @@ coming soon:
 
 ### Integration with the Youbot arm in Gazebo:
 
-Information will be later, now you can check a demo: https://youtu.be/KBRO_lhvtnA
+Information will be later, now you can check a demo: https://youtu.be/vPzOUe2N2ss
 
 ### Electrical parts:
