@@ -81,19 +81,19 @@ To use different commands for this gripper, you could use the following numbers 
 
 Working demo: https://youtu.be/vPzOUe2N2ss
 
-If you already have youbot package, for the implementation of this gripper with its functionality to the Kuka youbot Gazebo simulation, you have to do following actions:
+If you already have youbot package, for the implementation of this gripper with its functionality to the Kuka youbot Gazebo simulation, you have to do the following actions:
 
 1. Copy File `gripper_controller.launch` and put it into your `~catkin_ws/scr/youbot_simulation/youbot_gazebo_control/launch` directory
 2. Copy files `gripper_controller.yaml` and `gripper_controller_1.yaml` into your `~catkin_ws/scr/youbot_simulation/youbot_gazebo_control/config` directory
 3. Replace your `~catkin_ws/scr/youbot_description/urdf/youbot_gripper` and `~catkin_ws/scr/youbot_description/meshes/youbot_gripper` folders with the same folders from the same directories from this repository.
 
-or you can simply download `youbot_descriptions` and `youbot_simulation` folders into you `catkin_ws`.
+Or you can download `youbot_descriptions` and `youbot_simulation` folders into your `catkin_ws`.
 
-after you did this changes you should start the simulation with the following command:
+after you did these changes, you should start the simulation with the following command:
 
 ```roslaunch youbot_gazebo_robot youbot.launch``` 
 
-Sometimes, simulation require 2 or 3 restarts to spanw robot and controllers correcrly.
+Sometimes, simulation requires 2 or 3 restarts to spawn robot and controllers correctly.
 If your simulation works well, you can check the fingers of the gripper with:
 
 ```
