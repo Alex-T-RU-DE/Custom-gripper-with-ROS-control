@@ -1,5 +1,0 @@
-gripper_controller_1:
-  type: position_controllers/JointPositionController
-  joint: gripper_left_finger_fastener_joint
-  
-
