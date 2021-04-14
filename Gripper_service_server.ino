@@ -25,14 +25,11 @@ void setup()
   SERVO.WritePos(12,90, 0x01FF);
 }
 
-
-
 void loop()
 {
   nh.spinOnce();
   delay(1);
 }
-
 
 
 bool add(youbot_gripper::grip_service::Request  &req,
@@ -55,7 +52,6 @@ bool add(youbot_gripper::grip_service::Request  &req,
         res.result = true;
         break;
     default:
-        //if(safety_check(req.pos)) //PROBLEM HERE
             switch(static_cast<int>(req.pos/1000))
              {     case 1:
                          nh.loginfo("1 ");
