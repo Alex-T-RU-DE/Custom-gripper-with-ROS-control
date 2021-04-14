@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="gripper" default="gripper"/>
+
+  <!-- upload arm and gripper controller parameters -->
+  <rosparam file="$(find youbot_gazebo_control)/config/$(arg gripper)_controller.yaml" command="load" ns="$(arg gripper)"/> 
+
+  <!-- spawn gripper controller -->
+  <node pkg="controller_manager" type="spawner" name="$(arg gripper)_new_gripper_controller_spawner"  args="$(arg gripper)/gripper_controller" respawn="false" output="screen" />
+  
+  <rosparam file="$(find youbot_gazebo_control)/config/$(arg gripper)_controller_1.yaml" command="load" ns="$(arg gripper)"/> 
+  <node pkg="controller_manager" type="spawner" name="$(arg gripper)_new_gripper_controller_spawner_1"  args="$(arg gripper)/gripper_controller_1" respawn="false" output="screen" />
+ 
+</launch>
