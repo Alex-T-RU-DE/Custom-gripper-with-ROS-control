@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+       <xacro:include filename="$(find youbot_description)/urdf/youbot_gripper/new_gripper.gazebo.xacro" />
+       <xacro:include filename="$(find youbot_description)/urdf/youbot_gripper/new_gripper.transmission.xacro" />
+	   
+	<xacro:macro name="new_gripper_urdf" params="parent name *origin" >
+	  
+		<joint name="${name}_holder_joint" type="fixed" >
+				<xacro:insert_block name="origin" />
+				<parent link="${parent}" />
+				<child link="${name}_base_holder_link" />
+		</joint>  
+	  
+	  
+	  
+	  
+		<link name="${name}_base_holder_link">
+			<inertial>
+				  <origin
+				xyz="-0.0154913714783607 0.0138130469937227 -0.00019122623023348"
+				rpy="0 0 0" />
+				  <mass
+				value="0.325166075012768" />
+				  <inertia
+				ixx="0.000176422818214742"
+				ixy="-1.14630099641922E-09"
+				ixz="-9.58997413681059E-09"
+				iyy="0.000240392345030757"
+				iyz="-7.04160665163785E-07"
+				izz="0.000314342023674162" />
+			</inertial>
+			<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/base_holder_link.STL" /> 
+				 </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="1.0 0.4 0.0 1.0" />
+				  </material>
+			 </visual>
+				<collision>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/base_holder_link.STL" />
+				  </geometry>
+			</collision>
+		</link>
+
+		<link name="${name}_servo_left_link">
+				<inertial>
+				  <origin
+				xyz="0.020150145575314 0.0101 0.0198454858796802"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0338275279922958" />
+				  <inertia
+				ixx="5.70756586656377E-06"
+				ixy="5.80148509440568E-23"
+				ixz="8.86766496554433E-08"
+				iyy="9.51111668532985E-06"
+				iyz="-6.32864720294365E-23"
+				izz="6.07620941885605E-06" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/servo_left_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="0.0 0.0 0.0 1.0" />
+				  </material>
+				</visual>
+
+		 </link>
+
+		<joint name="${name}_servo_left_joint"
+				type="fixed">
+				<origin
+				  xyz="-0.0397908009150208 0.0238 0.0564"
+				  rpy="1.5707963267949 1.5707963267949 0" />
+				<parent link="${name}_base_holder_link" />
+				<child link="${name}_servo_left_link" />
+				<axis
+				  xyz="0 0 0" />
+		</joint>
+
+		<link name="${name}_left_finger_fastener_link">
+				<inertial>
+				  <origin
+				xyz="0.00226372174067158 0.0199992839781028 -0.0234471080962139"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0" />
+				  <inertia
+				ixx="1"
+				ixy="0"
+				ixz="0"
+				iyy="1"
+				iyz="0"
+				izz="0" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/left_finger_fastener_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="1.0 0.4 0.0 1.0" />
+				  </material>
+				</visual>
+				<collision>
+				  <origin xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/left_finger_fastener_link.STL" />
+				  </geometry>
+				</collision>
+		</link>
+		<joint name="${name}_left_finger_fastener_joint"
+				type="revolute">
+				<origin
+				  xyz="0.0102000000000002 0.0101 0"
+				  rpy="3.14159265358979 0 -1.58659399800857" />
+				<parent link="${name}_servo_left_link" />
+				<child link="${name}_left_finger_fastener_link" />
+				<axis xyz="0 0 1" />
+				<limit effort="1000.0" lower="-1.65" upper="0.05" velocity="0.5"/>
+		</joint>
+		<link name="${name}_left_finger_link">
+				<inertial>
+				  <origin
+				xyz="0.0169959009662644 -0.0172451544705946 0.018"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0684728752073224" />
+				  <inertia ixx="1.92584731118216E-05"
+				ixy="3.85525749503484E-06"
+				ixz="2.91277822181814E-20"
+				iyy="8.23467568536262E-06"
+				iyz="-1.04607349996278E-20"
+				izz="2.03605576297548E-05" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/left_finger_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="1.0 1.0 1.0 1.0" />
+				  </material>
+				</visual>
+				<collision>
+				  <origin
+				xyz="0 0 0" rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/left_finger_link.STL" />
+				  </geometry>
+				</collision>
+		</link>
+		 <joint name="${name}_left_finger_joint"
+				type="fixed">
+				<origin
+				  xyz="0.0154362314517575 0.0263000000000004 -0.0399"
+				  rpy="0 0 -3.14159265358979" />
+				<parent
+				  link="${name}_left_finger_fastener_link" />
+				<child
+				  link="${name}_left_finger_link" />
+				<axis
+				  xyz="0 0 0" />
+		</joint>
+		<link name="${name}_servo_right_link">
+				<inertial>
+				  <origin
+				xyz="0.020150145575314 0.0101 0.0198454858796802"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0338275279922958" />
+				  <inertia
+				ixx="5.70756586656377E-06"
+				ixy="7.85985176003018E-23"
+				ixz="8.86766496554432E-08"
+				iyy="9.51111668532985E-06"
+				iyz="-1.83701156015215E-22"
+				izz="6.07620941885605E-06" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/servo_right_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="0.0 0.0 0.0 1.0" />
+				  </material>
+				</visual>
+
+		</link>
+		<joint name="${name}_servo_right_joint"
+				type="fixed">
+				<origin
+				  xyz="-0.0113908009150208 0.0238 0.0564"
+				  rpy="1.5707963267949 1.5707963267949 0" />
+				<parent
+				  link="${name}_base_holder_link" />
+				<child
+				  link="${name}_servo_right_link" />
+				<axis
+				  xyz="0 0 0" />
+		</joint>
+
+		<link name="${name}_right_finger_fastener_link">
+				<inertial>
+				  <origin
+				xyz="-0.00226372174067153 0.0199992839781026 -0.0234471080962139"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0" />
+				  <inertia
+				ixx="1"
+				ixy="0"
+				ixz="0"
+				iyy="1"
+				iyz="0"
+				izz="0" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/right_finger_fastener_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="1.0 0.4 0.0 1.0" />
+				  </material>
+				</visual>
+				<collision>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/right_finger_fastener_link.STL" />
+				  </geometry>
+				</collision>
+		</link>
+
+		<joint name="${name}_right_finger_fastener_joint"
+				type="revolute">
+				<origin
+				  xyz="0.0102000000000001 0.0101 0"
+				  rpy="3.14159265358979 0 -1.58829722752844" />
+				<parent
+				  link="${name}_servo_right_link" />
+				<child
+				  link="${name}_right_finger_fastener_link" />
+				<axis
+				  xyz="0 0 1" />
+				<limit effort="1000.0" lower="-0.02" upper="1.65" velocity="0.5"/>
+		</joint>
+
+		<link name="${name}_right_finger_link">
+				<inertial>
+				  <origin
+				xyz="0.0169959009662644 -0.0172451544705946 0.018"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0684728752073222" />
+				  <inertia
+				ixx="1.92584731118215E-05"
+				ixy="3.85525749503483E-06"
+				ixz="2.57564826261444E-20"
+				iyy="8.23467568536258E-06"
+				iyz="-2.12579001275468E-21"
+				izz="2.03605576297547E-05" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/right_finger_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="1.0 1.0 1.0 1.0" />
+				  </material>
+				</visual>
+				<collision>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/right_finger_link.STL" />
+				  </geometry>
+				</collision>
+		</link>
+
+		<joint name="${name}_right_finger_joint"
+				type="fixed">
+				<origin
+				  xyz="-0.0154362314517573 0.0263 -0.00390000000000003"
+				  rpy="3.14159265358979 0 0" />
+				<parent
+				  link="${name}_right_finger_fastener_link" />
+				<child
+				  link="${name}_right_finger_link" />
+				<axis
+				  xyz="0 0 0" />
+		</joint>
+		
+		<link name="${name}_camera_holder_link">
+				<inertial>
+				  <origin
+				xyz="-0.0154558187135768 0.0264554443238969 0.00610502534126566"
+				rpy="0 0 0" />
+				  <mass
+				value="0.0575401627450105" />
+				  <inertia
+				ixx="1.88760755233664E-05"
+				ixy="6.42179161095357E-08"
+				ixz="6.70844267074005E-09"
+				iyy="4.24323271397149E-05"
+				iyz="-4.2719184355183E-06"
+				izz="5.78252549958773E-05" />
+				</inertial>
+				<visual>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/camera_holder_link.STL" />
+				  </geometry>
+				  <material
+				name="">
+				<color
+				  rgba="0.0 0.0 0.0 1.0" />
+				  </material>
+				</visual>
+				<collision>
+				  <origin
+				xyz="0 0 0"
+				rpy="0 0 0" />
+				  <geometry>
+				<mesh
+				  filename="package://youbot_description/meshes/youbot_gripper/camera_holder_link.STL" />
+				  </geometry>
+				</collision>
+		</link>
+		<joint name="${name}_camera_holder_joint"
+				type="fixed">
+				<origin
+				  xyz="-0.0309812074459294 0.0006459809840905 0.005"
+				  rpy="0 0 -3.14033747664133" />
+				<parent
+				  link="${name}_base_holder_link" />
+				<child
+				  link="${name}_camera_holder_link" />
+				<axis
+				  xyz="0 0 0" />
+		</joint>
+
+		<!-- extensions  -->
+		<xacro:gripper_transmission name="${name}" />	
+		<xacro:gripper_gazebo name="${name}" /> 
+
+
+		</xacro:macro>
+	</robot>
