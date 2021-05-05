@@ -14,21 +14,21 @@ ros::ServiceServer<youbot_gripper::grip_service::Request, youbot_gripper::grip_s
 
 void setup()
 { 
-  Serial1.begin(1000000);
-  nh.initNode();
-  nh.advertiseService(server);
-  while(!nh.connected()) 
-      nh.spinOnce();
-  //nh.loginfo("Checking Voltage.");
-  nh.loginfo("Gripper ready.");
-  SERVO.WritePos(1, 925, 0x01FF);
-  SERVO.WritePos(12,90, 0x01FF);
+           Serial1.begin(1000000);
+           nh.initNode();
+           nh.advertiseService(server);
+           while(!nh.connected()) 
+               nh.spinOnce();
+           //nh.loginfo("Checking Voltage.");
+           nh.loginfo("Gripper ready.");
+           SERVO.WritePos(1, 925, 0x01FF);
+           SERVO.WritePos(12,90, 0x01FF);
 }
 
 void loop()
 {
-  nh.spinOnce();
-  delay(1);
+           nh.spinOnce();
+           delay(1);
 }
 
 
@@ -41,25 +41,27 @@ bool add(youbot_gripper::grip_service::Request  &req,
   switch(req.pos) 
   {
     case 0:
-      
-        SERVO.WritePos(1,550, 0x01FF);
-        SERVO.WritePos(12,470, 0x01FF);
-        res.result = true;
-        break;
+                 SERVO.WritePos(1,550, 0x01FF);
+                 SERVO.WritePos(12,470, 0x01FF);
+                 res.result = true;
+                 break;
     case 1: 
-        SERVO.WritePos(1,925, 0x01FF);
-        SERVO.WritePos(12,90, 0x01FF);
-        res.result = true;
-        break;
+                 SERVO.WritePos(1,925, 0x01FF);
+                 SERVO.WritePos(12,90, 0x01FF);
+                 res.result = true;
+                 break;
     default:
             switch(static_cast<int>(req.pos/1000))
-             {     case 1:
-                         nh.loginfo("1 ");
+             {    case 0:
+                         SERVO.WritePos(1,(930-(req.pos-1000)), 0x01FF);
+                         SERVO.WritePos(12,(90+(req.pos-2000)), 0x01FF);
+                         res.result = true;
+                         break;
+                  case 1:
                          SERVO.WritePos(1,(930-(req.pos-1000)), 0x01FF);
                          res.result = true;                    
                          break;
                   case 2:
-                         nh.loginfo("2 ");
                          SERVO.WritePos(12,(90+(req.pos-2000)), 0x01FF);
                          res.result = true;
                          break;
@@ -81,14 +83,12 @@ bool add(youbot_gripper::grip_service::Request  &req,
 }
 
 bool safety_check(int number) //checking if the movement of one finger is safe for another finger
-  { nh.loginfo("enter 1");
+  {
     bool check=false;
-    nh.loginfo("enter 2");
     switch(static_cast<int>(number/1000))
         {
           case 1: //if i want to move first servo i have to check the second servo for its position to avoid the collision
                 int current_pos2=SERVO.Get_Pos(12); //getting data from position sensor of the servo with the 12th ID
-                nh.loginfo("enter 2.1");
                 if((current_pos2)>=80 && (current_pos2)<=480)  //borders are 90 and 470. 10 is a measurement error
                     {
                       nh.loginfo("assigned TRUE 1");
@@ -96,15 +96,13 @@ bool safety_check(int number) //checking if the movement of one finger is safe f
                     }
                 else 
                    {
-                    nh.logerror("Can't move the first servo because it conflicts with the position of the second servo or the second servo is on the wrong angle. Please, restart gripper."); 
+                    nh.logerror("Can't move the first servo because it conflicts with the the second servo's position or the second servo is on the wrong angle. Please, restart gripper."); 
                     check=false;
                    }
                 break;
-          
-          
+
           case 2:
                 int current_pos1=SERVO.Get_Pos(1); //getting data from position sensor of the servo with the 1st ID
-                nh.loginfo("enter 2.2");
                 if(((current_pos1)>=540) && (current_pos1)<=945)  //borders are 930 and 550. 10 is a measurement error
                     {
                       nh.loginfo("assigned TRUE 2 ");
@@ -112,17 +110,15 @@ bool safety_check(int number) //checking if the movement of one finger is safe f
                     }
                 else 
                     {
-                      nh.logerror("Can't move the second servo because it conflicts with the position of the first servo or the first servo is on the wrong angle. Please, restart gripper."); 
+                      nh.logerror("Can't move the second servo because it conflicts with the first servo's position or the first servo is on the wrong angle. Please, restart gripper."); 
                       check=false;
                     }
                 break;
 
           default:
-                nh.loginfo("enter 2.3");
                 nh.logerror("Invalid command 1.");
                 check=false;
-                
-              
+                 
         }
       nh.loginfo("enter 3");
       return check;
