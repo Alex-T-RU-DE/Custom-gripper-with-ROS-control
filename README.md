@@ -1,4 +1,3 @@
-(the documentation of the project is not finished yet)
 # Custom gripper for youbot with ROS control 
 
 Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-with-ROS-control/blob/main/README.md), [Русский](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-with-ROS-control/blob/main/README.ru.md) 
