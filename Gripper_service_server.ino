@@ -19,7 +19,6 @@ void setup()
            nh.advertiseService(server);
            while(!nh.connected()) 
                nh.spinOnce();
-           //nh.loginfo("Checking Voltage.");
            nh.loginfo("Gripper ready.");
            SERVO.WritePos(1, 925, 0x01FF);
            SERVO.WritePos(12,90, 0x01FF);
@@ -31,31 +30,36 @@ void loop()
            delay(1);
 }
 
-
 bool add(youbot_gripper::grip_service::Request  &req,
          youbot_gripper::grip_service::Response &res)
 {
  res.result=false;
  nh.loginfo("Got new request."); 
- if(data_check(req.pos))
-  switch(req.pos) 
-  {
-    case 0:
-                 SERVO.WritePos(1,550, 0x01FF);
-                 SERVO.WritePos(12,470, 0x01FF);
-                 res.result = true;
-                 break;
-    case 1: 
-                 SERVO.WritePos(1,925, 0x01FF);
-                 SERVO.WritePos(12,90, 0x01FF);
-                 res.result = true;
-                 break;
-    default:
-            switch(static_cast<int>(req.pos/1000))
+ if(data_check(req.pos) && safety_check())
+{
+  switch(static_cast<int>(req.pos/1000))
              {    case 0:
-                         SERVO.WritePos(1,(930-(req.pos-1000)), 0x01FF);
-                         SERVO.WritePos(12,(90+(req.pos-2000)), 0x01FF);
-                         res.result = true;
+                         SERVO.WritePos(1, (930-map(req.pos,0,100,0,380)), 0x01FF);
+                         SERVO.WritePos(12,(90 +map(req.pos,0,100,0,380)), 0x01FF);
+                         int last_servo_load=SERVO.Get_Load(1);
+                         int pos_error=30;  //assuming the data might have uncertainty
+                         int load_error=50; //assuming the data might have uncertainty
+                         int grasping_load=1000; 
+                         //checking whether object was grasped or not
+                         while(abs(SERVO.Get_Pos(1)-(930-map(req.pos,0,100,0,380)))>pos_error)
+                             {
+                              delay(500);
+                              if((abs(last_servo_load-SERVO.Get_Load(1))<=load_error) && (SERVO.Get_Load(1)>grasping_load))
+                                  break;
+                               last_servo_load=SERVO.Get_Load(1);                            
+                             }
+                          delay(200);
+                          if(SERVO.Get_Load(1)>grasping_load)
+                            {
+                             nh.loginfo("Object grasped.");                        
+                             res.result = true;
+                            }
+                         
                          break;
                   case 1:
                          SERVO.WritePos(1,(930-(req.pos-1000)), 0x01FF);
@@ -70,68 +74,50 @@ bool add(youbot_gripper::grip_service::Request  &req,
                          res.result = false;
           
              }
-      
   }
   else 
-    { 
-      nh.logerror("Invalid command 3.");
       res.result = false;
-    }
+      
   nh.loginfo("Sending back response.");
 
   return true;
 }
 
-bool safety_check(int number) //checking if the movement of one finger is safe for another finger
-  {
-    bool check=false;
-    switch(static_cast<int>(number/1000))
-        {
-          case 1: //if i want to move first servo i have to check the second servo for its position to avoid the collision
-                int current_pos2=SERVO.Get_Pos(12); //getting data from position sensor of the servo with the 12th ID
-                if((current_pos2)>=80 && (current_pos2)<=480)  //borders are 90 and 470. 10 is a measurement error
-                    {
-                      nh.loginfo("assigned TRUE 1");
-                      check=true;
-                    }
-                else 
-                   {
-                    nh.logerror("Can't move the first servo because it conflicts with the the second servo's position or the second servo is on the wrong angle. Please, restart gripper."); 
-                    check=false;
-                   }
-                break;
-
-          case 2:
-                int current_pos1=SERVO.Get_Pos(1); //getting data from position sensor of the servo with the 1st ID
-                if(((current_pos1)>=540) && (current_pos1)<=945)  //borders are 930 and 550. 10 is a measurement error
-                    {
-                      nh.loginfo("assigned TRUE 2 ");
-                      check=true;
-                    }
-                else 
-                    {
-                      nh.logerror("Can't move the second servo because it conflicts with the first servo's position or the first servo is on the wrong angle. Please, restart gripper."); 
-                      check=false;
-                    }
-                break;
-
-          default:
-                nh.logerror("Invalid command 1.");
-                check=false;
-                 
-        }
-      nh.loginfo("enter 3");
-      return check;
+bool safety_check()
+  { /*
+      checking actual voltage, position and temperature
+      More info about limits: http://image.dfrobot.com/image/data/SER0026/cds55xx-robot-servo-datasheet.pdf
+    */
+    if(SERVO.Get_Voltage(1)<=6.6 || SERVO.Get_Voltage(1)>=16)
+      {
+        nh.logerror("Aborted. Unsafe voltage");
+        return false;
+      }
+    if(SERVO.Get_Temp(1)<=-20 || SERVO.Get_Temp(1)>=80)
+      {
+        nh.logerror("Aborted. Unsafe temperature");
+        return false;
+      }
+    if(SERVO.Get_Pos(1)<525 || SERVO.Get_Pos(1)>947)
+      {
+        nh.logerror("Aborted. Unsafe position of the fitst servo");
+        return false;
+      }
+      
+      return true;
+     
   }
+
 
 bool data_check(int number) //checking the command
   {
-    if((number==0) || (number==1)
-    || (number>=1000 && number<=1380) || (number>=2000 && number<=2380))
+    if((number>=0) || (number<=100)
+    || (number>=1000 && number<=1380)
+    || (number>=2000 && number<=2380))
         return true;
     else
         {
-        nh.logerror("Invalid command 2.");
+        nh.logerror("Invalid command: the number should be in range(0:100; 1000:1380; 2000;2380.");
         return false;
         }
   }
