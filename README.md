@@ -64,15 +64,19 @@ Where ```NUMBER_OF_INSTRUCTIONS``` should be replaced according to numbers, whic
 
 To use different commands for this gripper, you could use the following numbers to achieve the desired result:
 
-```0``` - close gripper
-
-```1``` - open gripper
+```0-100``` opening %
 
 ```1000-1380``` set the angle of the first servo to the position in range 0-380
 
 ```2000-2380``` set the angle of the second servo to the position in range 0-380
 
+## Feedback
 
+Program sends back a feedback (bool) after it got the command. 
+The positive feedback will be when:
+- the object was grasped by gripper (checking servo's positions and loads) 
+- the command for left for the left finger has been successfully sent
+- the command for left for the right finger has been successfully sent
 
 ### Simulation:
  coming soon
