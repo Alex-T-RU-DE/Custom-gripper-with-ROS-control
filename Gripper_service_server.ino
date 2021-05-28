@@ -109,6 +109,6 @@ bool safety_check()
 
 bool data_check(int number) //checking the command
   {
-    return ((number >= 0  && number <= 100) || (number >= 1000 && number <= 1340) || (number >= 2000 && number <= 2340))
+    return ((number >= 0  && number <= 100) || (number >= 1000 && number <= 1340) || (number >= 2000 && number <= 2340));
 
   }
