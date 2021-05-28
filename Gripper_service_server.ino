@@ -70,7 +70,7 @@ bool add(youbot_gripper::grip_service::Request  &req,
                          res.result = true;
                          break;
                   default:
-                         nh.logerror("Invalid command 1.");
+                         nh.logerror("Invalid command");
                          res.result = false;
           
              }
