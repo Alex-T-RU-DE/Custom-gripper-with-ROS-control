@@ -58,8 +58,7 @@ bool add(youbot_gripper::grip_service::Request  &req,
                             {
                              nh.loginfo("Object grasped.");                        
                              res.result = true;
-                            }
-                         
+                            }                     
                          break;
                   case 1:
                          SERVO.WritePos(1,(930-(req.pos-1000)), 0x01FF);
@@ -76,10 +75,8 @@ bool add(youbot_gripper::grip_service::Request  &req,
              }
   }
   else 
-      res.result = false;
-      
+          res.result = false;     
   nh.loginfo("Sending back response.");
-
   return true;
 }
 
@@ -102,10 +99,8 @@ bool safety_check()
       {
         nh.logerror("Aborted. Unsafe position of the fitst servo");
         return false;
-      }
-      
-      return true;
-     
+      }     
+      return true;   
   }
 
 
