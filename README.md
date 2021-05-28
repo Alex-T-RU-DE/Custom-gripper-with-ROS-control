@@ -65,9 +65,9 @@ To use different commands for this gripper, you could use the following numbers 
 
 ```0-100``` opening %
 
-```1000-1380``` set the angle of the first servo to the position in range 0-380
+```1000-1340``` set the angle of the first servo to the position in range 0-380
 
-```2000-2380``` set the angle of the second servo to the position in range 0-380
+```2000-2340``` set the angle of the second servo to the position in range 0-380
 
 ## Feedback
 
