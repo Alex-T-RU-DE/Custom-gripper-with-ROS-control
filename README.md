@@ -4,7 +4,7 @@ Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-wi
 
 This project shows and explains how to make and implement a new gripper with ROS connection for the arm of the Kuka Youbot and how to implement gripper's Gazebo simulation. 
 
-## Required parts
+# Required parts
 
 -   Two servos 
 -   Printed with 3D printer and assembled gripper from the following [link](https://www.thingiverse.com/thing:4764063)
@@ -13,9 +13,9 @@ This project shows and explains how to make and implement a new gripper with ROS
 -   [DC-DC transformer](https://www.amazon.de/LAOMAO-Wandler-einstellbar-Spannungswandler-Converter/dp/B00HV4EPG8/ref=asc_df_B00HV4EPG8/?tag=googshopde-21&linkCode=df0&hvadid=231941675984&hvpos=&hvnetw=g&hvrand=3852759402861473550&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9068552&hvtargid=pla-420005320986&psc=1&th=1&psc=1)
 
 
-## Software:
+# Software:
 
-# Installing gripper’s packages and dependencies 
+## Installing gripper’s packages and dependencies 
 
 Before starting, make sure that you installed Arduino IDE.
 
@@ -53,7 +53,7 @@ Moreover, you have to give the permissions to the USB por before you will start 
 
  
  
-# Running gripper’s program  
+## Running gripper’s program  
 
 To start your gipper, you should start following command on your device, which is connected to the gripper:
 ```
@@ -88,10 +88,7 @@ The positive feedback will be when:
 - the command for left for the left finger has been successfully sent
 - the command for left for the right finger has been successfully sent
 
-### Simulation:
- coming soon
- 
-### Integration with the Youbot arm in Gazebo:
+# Integration with the Youbot arm in Gazebo:
 
 Working demo: https://youtu.be/vPzOUe2N2ss
 
