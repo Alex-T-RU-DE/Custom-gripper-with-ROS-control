@@ -4,6 +4,8 @@ Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-wi
 
 This project shows and explains how to make and implement a new gripper with ROS connection for the arm of the Kuka Youbot and how to implement gripper's Gazebo simulation. 
 
+![Imgur](https://i.imgur.com/OSl2oGD.jpg)
+
 # Required parts
 
 -   Two servos 
