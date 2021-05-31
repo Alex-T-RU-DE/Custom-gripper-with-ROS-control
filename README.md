@@ -93,7 +93,7 @@ The positive feedback will be when:
 # Integration with the Youbot arm in Gazebo:
 
 
-Working demo:
+Working demo (click):
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/vPzOUe2N2ss/0.jpg)](http://www.youtube.com/watch?v=vPzOUe2N2ss "Video Title")
  
