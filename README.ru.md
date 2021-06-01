@@ -4,7 +4,9 @@ Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-wi
 Этот проект описывает как сделать и интегрировать новый захват котролируемый ROSом для Kuka youbot. Этот репозиторий описывает последовательность действий, для создания и подключения нового захвата к мобильной платформы Kuka Youbot. 
 Для реализации контроля сервоприводов используется плата Arduino, поддерживающая ROS сервисы и соединяющаяся с компьютером робота и сервоприводами через UART. 
 
-## Необходимые компоненты
+![Imgur](https://i.imgur.com/OSl2oGD.jpg)
+
+# Необходимые компоненты
 
 - Два сервопривода
 - Распечатанный на 3D принтере и собраный захват. Модели и информацию можно найти [здесь](https://www.thingiverse.com/thing:4764063).
@@ -13,8 +15,9 @@ Language: [English](https://github.com/Alex-T-RU-DE/Custom-gripper-for-youbot-wi
 - [Трансформаторы напряжения](https://www.amazon.de/LAOMAO-Wandler-einstellbar-Spannungswandler-Converter/dp/B00HV4EPG8/ref=asc_df_B00HV4EPG8/?tag=googshopde-21&linkCode=df0&hvadid=231941675984&hvpos=&hvnetw=g&hvrand=3852759402861473550&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9068552&hvtargid=pla-420005320986&psc=1&th=1&psc=1)
 
 
-## Программа:
+# Программа:
 
+## Устанавливаем необходимые пакеты и зависимости
 Перед тем как начать, вам необходимо установить Arduino IDE.
 
 1. Копируйте "youbot_gripper" в вашу папку catkin_ws/src.
@@ -43,9 +46,17 @@ compilation terminated.
  ```
 то вы должны сменить файл "**msg.h**" в вашей директории `~/Arduino/libraries/ros_lib/ros2`, которая была сгенерирована командой ```rosrun rosserial_arduino make_libraries.py .``` . Сделать нужно это следующим образом: заходим `скетч>подключить библиотеку>управлять библиотеками` в Arduino IDE, находим и скачиваем через поиск библиотеку "*rosserial lib*" (0.7.8 version), заходим в `~/Rosserial_Arduino_Library/src/ros/`, копируем файл "**msg.h**" и заменяем на него файл с таким же именем в `~/Arduino/libraries/ros_lib/ros2`. После этого библиотеку `Rosserial_Arduino_Library` можно удалить.
 
+Moreover, you have to give the permissions to the USB por before you will start using the gripper. You can do it in 2 ways:
+Для запуска программы вам также необходимо выдать права на использование порта, к которому подключена плата. Вы можете сделать это 2 способами:
+
+sudo usermode -a -G dialog $USER – выдает постоянное разрешение на использование портов
+
+sudo chmod 666 /dev/ttyUSB0 – выдает временно разрешение на использование конкретного порта
+
+## Запуск программы
+
 Для того, чтобы запустить програму с грипером на вашем устройстве, к которому он подключен, вам нужно выполнить следующую команду:
-   
-7. Для того, чтобы запустить програму с грипером на вашем устройстве, к которому он подключен, вам нужно выполнить следующую команду:
+  
 ```
 rosrun rosserial_python serial_node.py /dev/tty_Ваш_порт_Ардуино
 ```
@@ -78,7 +89,7 @@ rosrun youbot_gripper youbot_gripper_client номер_инструкции
 - команда для правого пальца была успешно отправлена
 - команда для левого пальца была успешно отправлена
 
-## Интеграция с рукой-манипулятором в Gazebo 
+# Интеграция с рукой-манипулятором в Gazebo 
 
 Демо: https://youtu.be/vPzOUe2N2ss
 
