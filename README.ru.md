@@ -91,7 +91,10 @@ rosrun youbot_gripper youbot_gripper_client номер_инструкции
 
 # Интеграция с рукой-манипулятором в Gazebo 
 
-Демо: https://youtu.be/vPzOUe2N2ss
+Демо: 
+
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/vPzOUe2N2ss/0.jpg)](http://www.youtube.com/watch?v=vPzOUe2N2ss "Video Title")
 
 Если у вас уже есть установленный пакет с симуляцией юбота то для внедрения захвата и его функционала в симулятор Gazebo вам нужно сделать следующие действия:
 
